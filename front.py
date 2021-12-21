@@ -1,9 +1,9 @@
 import streamlit as st
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-import random
-import shap 
-shap.initjs()
+#import random
+#import shap 
+#shap.initjs()
 import joblib
 
 from  statsmodels.distributions.empirical_distribution import ECDF
@@ -82,70 +82,6 @@ def ShapPlot(values, data):
     return shap.summary_plot(values, data)
 
 st.title(TITLE)
-
-## Sidebar -----------
-
-#st.sidebar.markdown('### Seletores Dados Shap')
-#keep_na = st.sidebar.selectbox('Utilizar base com valores nulos', options=['Sim', 'Não'])
-keep_na = 'Sim'
-
-## -------------------
-#explainer, shap_values, shap_object, shap_data = Shap(keep_na)
-df_pred = ScoreDiv()
-
-cols_shapdata = ['Vendas Rac Por Mes', 'Vendas RAC Por Dia', 'Valor Gasto RAC', 'Valor Gasto SN', 
-                 'Tempo Cliente RAC', 'Tempo Cliente SN', 'Tempo Cliente GF','Tempo Ultima Venda RAC', 'Tempo Ultima Venda SN', 'Tempo Ultima Venda GF',
-                 'Quantidade de Carros na Proposta','Valor Medio da Proposta','Diferenca Valor Medio da Proposta',
-                 'QAP Proposta','Diferenca QAP Prosposta', 'Numero de Dias do Primeiro Lead',
-                 'Numero de Dias do Ultimo Lead','Numero de Dias da Abertura de Conta','Numero de Dias da Primeira Proposta',
-                 'Numero de Dias da Ultima Proposta','Numero de Dias do Ultimo Evento',
-                  'Valor Pre Aprovado','Page Views - GA', 'Tempo no Site - GA']
-#cont_col_shapdata = st.sidebar.selectbox('Coluna Contínua Gráfico de Distribuição', options=cols_shapdata, index=1)
-
-## Suporte nativo para linguagem markdown
-'''
----
-## Utilizando SHAP para Interpretabilidade do Modelo Treinado
-O SHAP (SHapley Additive exPlanations) é uma ferramenta que utiliza de estratégias de Teoria dos Jogos para explicar os resultados de modelos de Aprendizado de Máquina.
-
-O SHAP utiliza tanto o modelo treinado assim como os dados utilizados já formatados para identificar como cada _feature_ gera impacto na váriação no resultado esperado do modelo, tanto positiva quanto negativamente. Essas análises nos permitem identificar como a variação de valores das principais _features_ do modelo podem impactar os resultados, muitas destas _features_ ja identificadas na métrica _feature importance_.
-'''
-
-
-#f'''### Total de Linhas - {shap_data.shape[0]}'''
-#st.write(shap_data.sample(20,replace=True))
-
-'''
-No gráfico a seguir temos um exemplo de aplicação do SHAP ao utilizar os dados do modelo TurboLeads junto ao modelo treinado. O Eixo X representa o grau de importancia que determinada _feature_ tem sobre o score do modelo, equanto o Eixo Y representa o valor absoluto dessa _feature_ (somente para features de caráter contínuo)
-'''
-
-#st.pyplot(shap.summary_plot(shap_values, shap_data))
-#st.pyplot(ShapPlot(shap_values, shap_data))
-
-
-"""row1_1, row1_2 = st.columns(2)
-with row1_1:    
-    #st.pyplot(shap.summary_plot(shap_values, shap_data))
-    st.write('pato')
-
-with row1_2:
-    ecdf = ECDF(shap_data[cont_col_shapdata])
-    fig, ax = plt.subplots()
-    ax = plt.plot(ecdf.x, ecdf.y)
-    plt.xlabel('Valor')
-    plt.ylabel('Proporção')
-    plt.title(f'Distribuição Cumulativa de {cont_col_shapdata}')
-    st.pyplot(fig)"""
-
-'''
-No gráfico a seguir temos o impacto das principais _features_ sobre uma observação aleatória da base de treino.
-'''
-
-#rand_num = random.randrange(len(shap_object))
-#lead = df.loc
-#st.write(shap_data.loc[rand_num, ''])
-#with row1_1:
-#st.pyplot(shap.plots.waterfall(shap_object[rand_num]))
 
 df_pred = ScoreDiv()
 
