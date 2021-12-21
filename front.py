@@ -66,7 +66,7 @@ def ScoreDiv():
     
     ## Dados predição turboleads + dados modelo (pré tuplas)
     df_pred = pd.read_csv('pred_leads_oct.csv')
-    df_turbo = pd.read_csv('base_treino_turboleads.csv')
+    df_turbo = pd.read_csv('treino_amostra_tl.csv')
     merge_pred = df_turbo.merge(df_pred[['id_lead', 'vlr_previsao_conversao']], on='id_lead', how='inner')
 
     ## FILL NA
